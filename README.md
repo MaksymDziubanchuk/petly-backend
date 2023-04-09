@@ -7,9 +7,9 @@
 
 ## Petly
 
-[![Homepage](./assets/images/Home_min.jpg 'Petly')](https://team-project-pet-support.vercel.app/)
+[![Homepage](./assets/images/Home_min.jpg 'Petly')](https://petly-project.vercel.app/)
 
-[Live site](https://team-project-pet-support.vercel.app/)
+[Live site](https://petly-project.vercel.app/)
 
 Welcome to our online platform that offers a variety of animals for sale or
 adoption, completely free of charge. We are dedicated to providing a safe and
