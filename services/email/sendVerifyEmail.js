@@ -1,13 +1,26 @@
-const sgMail = require('@sendgrid/mail')
+const nodemailer = require('nodemailer')
 require('dotenv').config()
+const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_FROM } = process.env
 
-const { SENDGRID_API_KEY, SENDGRID_EMAIL } = process.env
+const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: Number(SMTP_PORT),
+    secure: false,
+    auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS,
+    },
+})
 
-sgMail.setApiKey(SENDGRID_API_KEY)
+const sendVerifyEmail = async ({ to, subject, html }) => {
+    const mail = {
+        from: `"Petly App" <${EMAIL_FROM}>`,
+        to,
+        subject,
+        html,
+    }
 
-const sendVerifyEmail = async (data) => {
-    const email = { ...data, from: `${SENDGRID_EMAIL}` }
-    await sgMail.send(email)
+    await transporter.sendMail(mail)
     return true
 }
 
