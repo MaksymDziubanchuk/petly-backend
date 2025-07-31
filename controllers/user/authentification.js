@@ -7,7 +7,7 @@ const authentification = async (req, res, next) => {
     const { authorization = '' } = req.headers
     const [bearer, token] = authorization.split(' ')
     if (bearer !== 'Bearer' || !token) {
-        next(HttpError(400, 'Token not found'))
+        return next(HttpError(400, 'Token not found'))
     }
     try {
         const { id } = jwt.verify(token, SECRET_KEY)

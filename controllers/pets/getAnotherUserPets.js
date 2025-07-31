@@ -11,7 +11,7 @@ const getAnotherUserPets = async (req, res, next) => {
     )
 
     if (!result) {
-        next(HttpError(404))
+        return next(HttpError(404))
     }
     res.json(result)
 }

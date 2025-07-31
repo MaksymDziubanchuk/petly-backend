@@ -13,7 +13,7 @@ const getNoticesByCategories = async (req, res, next) => {
         const allNotice = await Notice.find({ category: categoryName })
         const countNotices = allNotice.length ?? 0
         if (!foundNotices) {
-            next(HttpError(404))
+            return next(HttpError(404))
         } else {
             const notices = [...foundNotices].sort(
                 (firstNotice, secondNotice) =>

@@ -7,7 +7,7 @@ const deleteFromFavorite = async (req, res, next) => {
 
     const index = favoriteNotices.indexOf(noticeId)
     if (index === -1) {
-        next(HttpError(404, 'Notice not found'))
+        return next(HttpError(404, 'Notice not found'))
     } else {
         favoriteNotices.splice(index, 1)
         const user = await User.findByIdAndUpdate(

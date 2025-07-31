@@ -11,23 +11,23 @@ const resendVerifyEmail = async (req, res, next) => {
     const user = await User.findOne({ email })
 
     if (!user) {
-        next(HttpError(404, 'User not found'))
+        return next(HttpError(404, 'User not found'))
     }
 
     if (user.verify) {
-        next(HttpError(400, 'You already verified'))
+        return next(HttpError(400, 'You already verified'))
     }
 
     const passwordCompare = await bcrypt.compare(password, user.password)
     if (!passwordCompare) {
-        next(HttpError(401, 'Password is wrong'))
+        return next(HttpError(401, 'Password is wrong'))
     }
 
     const { verificationToken } = user
 
     const verifyEmail = {
         to: email,
-        subject: 'Email verification',
+        subject: 'Email verification on Pet Support service',
         html: `<a target="_blank" href="${BASE_URL}/api/auth/verify/${verificationToken}">Click to verify your email on <b>Pet Support</b> service!</a>`,
     }
 

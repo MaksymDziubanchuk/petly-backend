@@ -9,7 +9,7 @@ const updateUserData = async (req, res, next) => {
 
     const { error } = schemas.updateSchema.validate(query)
     if (error) {
-        next(HttpError(400, error.message))
+        return next(HttpError(400, error.message))
     }
 
     const key = Object.keys(query)[0]
@@ -17,7 +17,7 @@ const updateUserData = async (req, res, next) => {
     const value = query[key]
 
     if (value === '') {
-        next(HttpError(400, `${key} is required`))
+        return next(HttpError(400, `${key} is required`))
     }
 
     const actionResult = await User.findByIdAndUpdate(req.user, req.query, {
@@ -25,7 +25,7 @@ const updateUserData = async (req, res, next) => {
     })
 
     if (!actionResult) {
-        next(HttpError(404))
+        return next(HttpError(404))
     }
 
     const result = await User.findOne({ _id })

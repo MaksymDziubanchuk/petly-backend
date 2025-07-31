@@ -11,6 +11,8 @@ const register = async (req, res, next) => {
     const { email, password } = req.body
 
     const user = await User.findOne({ email })
+    console.log(user)
+
     if (user) {
         return next(HttpError(409, 'Such email already exists'))
     }
@@ -27,7 +29,7 @@ const register = async (req, res, next) => {
 
     const verifyEmail = {
         to: email,
-        subject: 'Email verification',
+        subject: 'Email verification on Pet Support service',
         html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html

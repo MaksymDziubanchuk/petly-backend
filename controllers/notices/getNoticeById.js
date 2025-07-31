@@ -9,7 +9,7 @@ const getNoticeById = async (req, res, next) => {
         'name email phone'
     )
     if (!notice) {
-        next(HttpError(404))
+        return next(HttpError(404))
     }
     res.json(notice)
 }

@@ -9,7 +9,7 @@ const avatarsDir = path.join(__dirname, '../../', 'public', 'avatars')
 const addUserPet = async (req, res, next) => {
     const { _id: owner } = req.user
     if (!req.file) {
-        next(HttpError(400, 'Image is required'))
+        return next(HttpError(400, 'Image is required'))
     }
     const { path: tempUpload, originalname } = req.file
     const filename = `${owner}_ownPet_${originalname}`

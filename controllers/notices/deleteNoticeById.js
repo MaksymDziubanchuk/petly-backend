@@ -10,7 +10,7 @@ const deleteNoticeById = async (req, res, next) => {
         owner,
     })
     if (!deletedNotice) {
-        next(HttpError(404))
+        return next(HttpError(404))
     }
     try {
         await cloudinary.uploader

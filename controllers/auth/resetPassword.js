@@ -11,7 +11,7 @@ const resetPassword = async (req, res, next) => {
 
     const user = await User.findOne({ email })
     if (!user) {
-        next(HttpError(404, 'Email not found'))
+        return next(HttpError(404, 'Email not found'))
     }
 
     const payload = {
@@ -26,7 +26,7 @@ const resetPassword = async (req, res, next) => {
     )
 
     if (!result) {
-        next(HttpError(404))
+        return next(HttpError(404))
     }
 
     const resetPasswordEmail = {

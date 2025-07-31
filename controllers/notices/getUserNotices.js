@@ -13,7 +13,7 @@ const getUserNotices = async (req, res, next) => {
         const allNotice = await Notice.find({ owner })
         const countNotices = allNotice.length ?? 0
         if (!unsortedNotices) {
-            next(HttpError(404))
+            return next(HttpError(404))
         } else {
             const notices = [...unsortedNotices].sort(
                 (firstNotice, secondNotice) =>

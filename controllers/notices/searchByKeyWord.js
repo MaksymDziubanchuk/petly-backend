@@ -22,7 +22,7 @@ const searchByKeyWord = async (req, res, next) => {
         })
         const countNotices = allResults.length ?? 0
         if (!result) {
-            next(HttpError(404))
+            return next(HttpError(404))
         } else {
             res.json({ countNotices, result })
         }

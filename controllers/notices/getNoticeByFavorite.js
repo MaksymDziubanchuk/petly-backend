@@ -21,7 +21,7 @@ const getNoticeByFavorite = async (req, res, next) => {
         })
         const countNotices = allNotices.length ?? 0
         if (!unsortedNotices) {
-            next(HttpError(404))
+            return next(HttpError(404))
         } else {
             const notices = [...unsortedNotices].sort(
                 (firstNotice, secondNotice) =>

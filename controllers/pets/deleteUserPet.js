@@ -5,7 +5,7 @@ const deleteUserPet = async (req, res, next) => {
     const deletingImage = await Pet.findById({ _id: req.params.petId })
     const status = await Pet.findByIdAndRemove(req.params.petId)
     if (!status) {
-        next(HttpError(404))
+        return next(HttpError(404))
     }
     try {
         await cloudinary.uploader
