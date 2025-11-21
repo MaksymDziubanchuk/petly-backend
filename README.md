@@ -101,7 +101,6 @@ npm start
 | `npm run start:dev` | Start the server in development mode |
 | `npm run lint`      | Lint check using ESLint              |
 | `npm run lint:fix`  | Auto-fix simple lint errors          |
-
 ---
 
 ## 👥 Team
