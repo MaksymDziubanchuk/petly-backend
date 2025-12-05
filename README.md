@@ -77,8 +77,8 @@ JWT_SECRET=your_jwt_secret
 CLOUDINARY_API_KEY=your_key
 CLOUDINARY_API_SECRET=your_secret
 ...
-```
 
+```
 ### 4. Start server
 
 ```bash
